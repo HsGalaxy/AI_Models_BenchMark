@@ -15,7 +15,6 @@ evaluation:
   benchmarks:
     - "mmlu"
     - "gsm8k"
-    - "humaneval"
     - "math"
 
   # Parameters for specific benchmarks and their API calls
