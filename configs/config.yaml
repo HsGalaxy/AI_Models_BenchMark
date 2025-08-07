@@ -1,0 +1,33 @@
+# Configuration for the LLM Benchmark Tool
+# Rename this file to config.yaml and fill in your details.
+
+# List of models to evaluate. You can add multiple models.
+models:
+  - name: "claude-4-sonnet-b4u" # A unique name for this model configuration
+    api_key: "sk-1RkzWuFywMhXqDomiCE7hC6GMYv9BP4edd3MwLdN0jpb2O9y" # Your OpenAI API key or key for the compatible endpoint
+    api_base: "https://b4u.qzz.io/v1" # The base URL of the API endpoint
+    model_name: "claude-4-sonnet" # The actual model identifier used in API calls
+    context_length: 200000
+
+# Evaluation parameters
+evaluation:
+  # List of benchmarks to run. Available: mmlu, gsm8k, humaneval, math
+  benchmarks:
+    - "mmlu"
+    - "gsm8k"
+    - "humaneval"
+    - "math"
+
+  # Parameters for specific benchmarks and their API calls
+  api_params:
+    max_tokens: 2048 # Increased for potentially longer chain-of-thought
+    temperature: 0.0 # Set to 0 for deterministic output
+
+  mmlu:
+    k_shot: 5
+  gsm8k:
+    k_shot: 8
+  humaneval:
+    pass # No specific params needed
+  math:
+    k_shot: 4
