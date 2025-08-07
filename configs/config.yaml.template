@@ -1,0 +1,41 @@
+# Configuration for the LLM Benchmark Tool
+# Rename this file to config.yaml and fill in your details.
+
+# List of models to evaluate. You can add multiple models.
+models:
+  - name: "gpt-4" # A unique name for this model configuration
+    api_key: "sk-..." # Your OpenAI API key or key for the compatible endpoint
+    api_base: "https://api.openai.com/v1" # The base URL of the API endpoint
+    model_name: "gpt-4" # The actual model identifier used in API calls
+    context_length: 8192
+
+  # - name: "another-model"
+  #   api_key: "..."
+  #   api_base: "..."
+  #   model_name: "..."
+  #   context_length: 4096
+
+# Evaluation parameters
+evaluation:
+  # List of benchmarks to run. Available: mmlu, gsm8k, humaneval, math
+  benchmarks:
+    - "mmlu"
+    - "gsm8k"
+    # - "humaneval"
+    # - "math"
+
+  # Parameters for specific benchmarks
+  mmlu:
+    k_shot: 5 # Number of few-shot examples to provide
+  gsm8k:
+    k_shot: 8
+  humaneval:
+    # HumanEval doesn't typically use k-shot examples in the same way
+    pass
+  math:
+    k_shot: 4
+
+# Global API call parameters
+api_params:
+  max_tokens: 1024
+  temperature: 0.1
